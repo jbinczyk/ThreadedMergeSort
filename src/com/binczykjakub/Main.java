@@ -11,20 +11,23 @@ public class Main {
         ArrayList<Integer> tablica = new ArrayList<>();
 
         Random rand = new Random();
-        for(int i=0; i<10; i++){
-            tablica.add(rand.nextInt(50));
+        for(int i=0; i<500; i++){
+            tablica.add(rand.nextInt(50000));
         }
         System.out.println("Przed sortowaniem: ");
         printArray(tablica);
 
+        long start = System.nanoTime();
         MergeSortConcurrent.sort(tablica);
+        long elapsedTime = System.nanoTime() - start;
 
         System.out.println("\n\nPo sortowaniu: ");
         printArray(tablica);
+        System.out.println("\nMinelo sekund: "+(elapsedTime/1000000000));
 
      }
 
-     public static void printArray(ArrayList<Integer> arr){
+     private static void printArray(ArrayList<Integer> arr){
         for(int i=0; i<arr.size(); i++){
             System.out.print(arr.get(i));
             if(i<arr.size()-1)
